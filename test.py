@@ -6,21 +6,21 @@ import os
 import sys
 from openpyxl.styles.borders import Side
 
-fields = 'IP Address :','Login :', 'Password :', 'Command :'
-def Login(entries,root):
-    text=[]
-    for entry in entries:
-        text.append(entry[1].get())
-    print(text)
-    ssh = paramiko.SSHClient()
-    ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-    ssh.connect(text[0], username=text[1], password=text[2])
-    stdin, stdout, stderr = ssh.exec_command(text[3])
-    u=stdout.readlines()
-    output = ''.join(u)
-    sc=ScrolledText(root)
-    sc.pack(side=LEFT)
-    sc.insert(END, output)
+fields = 'Host :','Username :', 'Password :', 'Command :', 'Single Client? (Y/N) :'
+# def Login(entries,root):
+#     text=[]
+#     for entry in entries:
+#         text.append(entry[1].get())
+#     print(text)
+#     ssh = paramiko.SSHClient()
+#     ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+#     ssh.connect(text[0], username=text[1], password=text[2])
+#     stdin, stdout, stderr = ssh.exec_command(text[3])
+#     u=stdout.readlines()
+#     output = ''.join(u)
+#     sc=ScrolledText(root)
+#     sc.pack(side=LEFT)
+#     sc.insert(END, output)
     
     
 def makeform(root, fields):
